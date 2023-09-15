@@ -1,0 +1,27 @@
+td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 30px auto;
+    text-align: center;
+    background-color: lightgray;
+}
+
+input {
+    text-align: right;
+    background-color: lightgreen;
+    font-size: 18px;
+}
+
+button {
+    background: unset;
+    border: unset;
+    padding: 5px;
+}
+
+div {
+    margin: 10px 30%;
+    padding: 20px;
+}
