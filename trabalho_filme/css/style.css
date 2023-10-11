@@ -2,8 +2,23 @@
     justify-content: space-between;
     flex-wrap:wrap;
     row-gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.carrossel {
-   
+.card {
+    margin: 0px 20px;
+}
+
+#card-box, #card-box2{
+    margin: auto;
+}
+
+#imagem {
+    border-radius: 5px;
+}
+
+#fundo {
+    width: 100%;
 }
