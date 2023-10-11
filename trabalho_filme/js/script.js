@@ -38,10 +38,10 @@ fetch('https://api.themoviedb.org/3/movie/'+id, options)
 .then(response => {
     console.log(response);
     
-    document.getElementById('titulo_filme').innerText = response.title;
+    //document.getElementById('titulo_filme').innerText = response.title;
     document.getElementById('imagem_filme').src = "https://image.tmdb.org/t/p/w300"+response.poster_path;
     document.getElementById('resumo_filme').innerText = response.overview;
-    document.getElementById('release').innerText = response.release_date;
+    //document.getElementById('release').innerText = response.release_date;
     
 
 })
