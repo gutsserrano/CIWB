@@ -21,4 +21,11 @@
 
 #fundo {
     width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media(max-width: 991px){
+    .caixa_filme{
+        flex-direction: column;
+    }
 }

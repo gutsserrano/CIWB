@@ -42,44 +42,17 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
   .catch(err => console.error(err));
 
 // MAIS BEM AVALIADOS
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc', options)
-.then(response => response.json())
-.then(response => {
-  console.log('Mais bem avaliados')
-    console.log(response.results)
-
-    for(let i = 0; i < 12; i++){
-        const div = template_card.content.cloneNode(true);
-        div.getElementById('imagem').src = "https://image.tmdb.org/t/p/w300"+response.results[i].poster_path;
-        //div.getElementById('titulo').innerHTML = response.results[i].title;
-        div.getElementById('botao').href = "filme.html?id="+response.results[i].id;
-        card_box_avaliados.appendChild(div);
-    }
-
-})
-.catch(err => console.error(err));
+busca('vote_count.desc', 'avaliados');
 
 
 // MAIS VENDIDOS
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=revenue.desc', options)
-.then(response => response.json())
-.then(response => {
-    console.log('Mais vendidos')
-    console.log(response.results)
+busca('revenue.desc', 'vendidos')
 
-    for(let i = 0; i < 12; i++){
-        const div = template_card.content.cloneNode(true);
-        div.getElementById('imagem').src = "https://image.tmdb.org/t/p/w300"+response.results[i].poster_path;
-        //div.getElementById('titulo').innerHTML = response.results[i].title;
-        div.getElementById('botao').href = "filme.html?id="+response.results[i].id;
-        card_box_vendidos.append(div);
-    }
+// ESTREIAS
+busca ('primary_release_date.desc', 'estreia');
 
-})
-.catch(err => console.error(err));
-
-// ESREIAS
-fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=primary_release_date.desc', options)
+function busca(link, aba){
+  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by='+link, options)
 .then(response => response.json())
 .then(response => {
     console.log('Próximos lançamentos')
@@ -91,13 +64,38 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
         div.getElementById('imagem').src = "https://image.tmdb.org/t/p/w300"+response.results[i].poster_path;
         //div.getElementById('titulo').innerHTML = response.results[i].title;
         div.getElementById('botao').href = "filme.html?id="+response.results[i].id;
-        card_box_estreia.append(div);
+        /* if(aba == 'home'){
+          card_box.append(div);
+        }else if(aba == 'vendidos'){
+          card_box_vendidos.append(div);
+        }else if(aba == 'estreia'){
+          card_box_estreia.append(div);
+        }else if(aba == 'avaliados'){
+          card_box_avaliados.append(div);
+        } */
+
+        switch (aba) {
+          case 'vendidos':
+            card_box_vendidos.append(div);
+            break;
+          case 'estreia':
+            card_box_estreia.append(div);
+            break;
+          case 'avaliados':
+            card_box_avaliados.append(div);
+            break;
+          case 'home':
+            card_box.append(div);
+            break;
+        }
+        
         }
       }
         
 
 })
 .catch(err => console.error(err));
+}
 
 //Pagina filme
 const url = window.location.href;
@@ -110,12 +108,12 @@ fetch('https://api.themoviedb.org/3/movie/'+id, options)
 .then(response => {
     console.log(response);
     
-    //document.getElementById('fundo').style = "background-image: url('https://image.tmdb.org/t/p/w500"+response.backdrop_path+"')";
+    document.getElementById('fundo').style = "background-image: linear-gradient(217deg, rgb(182 168 168 / 80%), rgb(196 186 186 / 38%) 70.71%), url('https://image.tmdb.org/t/p/w500"+response.backdrop_path+"')";
     document.getElementById('titulo_filme').innerText = response.title;
     document.getElementById('imagem_filme').src = "https://image.tmdb.org/t/p/w300"+response.poster_path;
     document.getElementById('resumo_filme').innerText = "Sinopse: "+response.overview;
     document.getElementById('release').innerText = response.release_date+" ("+response.original_language+")";
-    document.getElementById('average').innerText = "• Avaliação dos usuários: "+response.vote_average;
+    document.getElementById('average').innerText = "• Avaliação dos usuários: "+response.vote_average.toFixed(1);
     
 
 })
