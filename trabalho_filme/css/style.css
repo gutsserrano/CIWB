@@ -1,22 +1,45 @@
+.card-body div{
+    
+    
+}
+
+.body{
+    background-color: rgb(14, 14, 17);
+    
+}
+
+.navbar {
+    background-color: rgb(105, 94, 120);
+}
+
 .card-body {
-    justify-content: space-between;
     flex-wrap:wrap;
     row-gap: 20px;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .card {
     margin: 0px 20px;
+    
 }
 
-#card-box, #card-box2{
-    margin: auto;
+ul .dropdown-menu  {
+    background-color: rgb(190, 167, 223);
+}
+
+#card, #card-vendidos, #card-estreia, #card-avaliados {
+    background-color: rgb(14, 14, 17);
 }
 
 #imagem {
     border-radius: 5px;
+    border: 3px solid rgb(42, 33, 56);
+    transition: transform 0.2s;
+}
+
+#imagem:hover {
+    transform: scale(1.07);
 }
 
 #fundo {
@@ -24,8 +47,35 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-@media(max-width: 991px){
+
+#titulo_filme{
+    margin-top: 10px;
+}
+
+#imagem_filme{
+    border-radius: 5px;
+    border: 3px solid rgb(42, 33, 56);
+    margin: 20px;
+}
+
+#textos{
+    font-weight: 600;
+}
+
+footer{
+    height: 30px;
+    color: rgb(193, 170, 224);
+    margin: 20px;
+}
+
+@media(max-width: 770px){
     .caixa_filme{
         flex-direction: column;
+        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
+
 }

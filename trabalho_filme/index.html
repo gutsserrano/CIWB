@@ -8,25 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   </head>
-  <body>
+  <body class="body">
     
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">MovieMasters</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Filmes
@@ -42,47 +33,21 @@
       </div>
     </nav>
 
-      <!--testando um placeholder-->
-      <!-- <div id="carregando">
-        <template id="template-load">
-          <div class="card" aria-hidden="true">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title placeholder-glow">
-                <span class="placeholder col-6"></span>
-              </h5>
-              <p class="card-text placeholder-glow">
-                <span class="placeholder col-7"></span>
-                <span class="placeholder col-4"></span>
-                <span class="placeholder col-4"></span>
-                <span class="placeholder col-6"></span>
-                <span class="placeholder col-8"></span>
-              </p>
-              <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-            </div>
-          </div>
-        </template>
-      </div> -->
-
       <div id="card-box" class="card-body d-flex mt-3">
 
         <template id="template-card" class="home">
-          <span id="home" class="home"></span>
-            <!-- <div class="card" style="width: 18rem;">
-                <img id="imagem" src="">
-                <div class="card-body">
-                <h5 id="titulo" class="card-title"></h5>
-                <p class="card-text"></p>
-                <a href="" id="botao" class="btn btn-primary">Ver filme</a>
-                </div>
-            </div> -->
-
-            <div class="card" style="width: 18rem;">
+            <div id="card" class="card" style="width: 18rem; margin: 1rem 2rem 1rem 2rem;">
               <a href="" id="botao"><img id="imagem" src=""></a>
             </div>
         </template>
 
-      </div><!--display flex-wrap-->
+      </div>
+
+      <footer>
+        <div class="container rodape">
+          <p>&copy; 2023 Augusto Grandini Serrano - Todos os direitos reservados</p>
+        </div>
+      </footer>
 
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
