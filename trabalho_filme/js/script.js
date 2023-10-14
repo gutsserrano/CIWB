@@ -50,7 +50,7 @@ busca('revenue.desc', 'vendidos')
 busca ('primary_release_date.desc', 'estreia');
 
 function busca(link, aba){
-  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by='+link, options)
+  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=pt-BR&page=1&sort_by='+link, options)
 .then(response => response.json())
 .then(response => {
     console.log('Próximos lançamentos')
@@ -101,7 +101,8 @@ fetch('https://api.themoviedb.org/3/movie/'+id, options)
     document.getElementById('imagem_filme').src = "https://image.tmdb.org/t/p/w300"+response.poster_path;
     document.getElementById('resumo_filme').innerText = "Sinopse: "+response.overview;
     document.getElementById('release').innerText = response.release_date+" ("+response.original_language+")";
-    document.getElementById('average').innerText = "• Avaliação dos usuários: "+response.vote_average.toFixed(1);
+    document.getElementById('average').innerText = "• Avaliação dos usuários: "+response.vote_average.toFixed(1)+"/10";
+    document.getElementById('count').innerText = "• Quantidade de avaliações: "+response.vote_count;
 
     const options = {method: 'GET', headers: {accept: 'application/json'}};
 
@@ -109,3 +110,36 @@ fetch('https://api.themoviedb.org/3/movie/'+id, options)
 
 })
 //.catch(err => console.error(err));
+
+fetch('https://api.themoviedb.org/3/movie/'+id+'/videos?language=en-US', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .then(response => console.log('trailer'))
+/*   .then(response => {
+    //if(response[0].key != false){
+      document.getElementById('trailer').href = 'https://www.youtube.com/watch?v='+response['results'][0].key;
+    //}
+  }) */
+
+  .then(response => {
+    fetch('https://api.themoviedb.org/3/movie/'+id+'/videos?language=en-US')
+  .then(response => response.json())
+  .then(data => {
+    let key = data.results[0].key;
+    let youtubeLink = `https://www.youtube.com/watch?v=${key}`;
+    console.log(youtubeLink);
+    document.getElementById('trailer').href = youtubeLink;
+  })
+})
+
+  /* .then(data => {
+    let officialTrailer = data.results.find(video => video.type === 'Official Trailer');
+    if (officialTrailer) {
+        let youtubeLink = 'https://www.youtube.com/watch?v=' + officialTrailer.key;
+        console.log(youtubeLink);
+        // Agora você pode usar o link do YouTube em seu HTML
+        document.getElementById('trailer').href = youtubeLink;
+    }
+})
+  .catch(error => console.error('Erro:', error));
+  }) */
